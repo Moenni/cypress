@@ -1,12 +1,16 @@
  /// <reference types="cypress" />
- describe("Actividad complementaria", () =>{
-   beforeEach("Debe ingresar en el sistema y dirigirse a todolist",() =>{
+import {AuthPage }  from "../PageObjects/Authpage";
+import {Homepage }  from "../PageObjects/Homepage";
+ describe('Todo list Fixture', () =>{
+   const authPage =new AuthPage();
+   const homePage =new Homepage();
+    beforeEach("Debe ingresar en el sistema y dirigirse a todolist",() =>{
         cy.visit('https://pushing-front.vercel.app/');
-        cy.get('#registertoggle').dblclick();
-        cy.get('#user').type('NicolasMomo')
-        cy.get('#pass').type('nicolas1@')
-        cy.get('#submitForm').click()
-        cy.get('#todolistlink').click();
+        authPage.toggleScreen()
+        authPage.escribirUsuario('NicolasMomo')
+        authPage.escribirContraseña('nicolas1@')
+        authPage.clickLogin()
+        homePage.clickTodoList()
         })
     it("Ingresar una tarea a la lista",()=>{
         const tarea1="Primer tarea"
@@ -18,12 +22,7 @@
         const tarea1="Primer tarea"
         const tarea2="Segunda tarea"
         const tarea3="Tercer tarea"
-        cy.get('[name="task"]').type(tarea1)
-        cy.get("#sendTask").click()
-        cy.get('[name="task"]').type(tarea2)
-        cy.get("#sendTask").click()
-        cy.get('[name="task"]').type(tarea3)
-        cy.get("#sendTask").click()
+     
         cy.get('#removeAll').click()
     })
     it("Deberia visualizar solamente las tareas completadas en la pestaña 'Completed'",()=>{

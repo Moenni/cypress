@@ -3,13 +3,13 @@ export class AuthPage{
     toggleScreen(){
         cy.get('#registertoggle').dblclick();
     }
-    writeUsername(usuario){
+    escribirUsuario(usuario){
         cy.get('#user').type(usuario)
     }
-    writePassword(password){
+    escribirContraseña(password){
         cy.get('#pass').type(password)
     }
     clickLogin(){
-        cy.contains("Log in").click()
+        cy.get("#submitForm").click()
     }
 }
