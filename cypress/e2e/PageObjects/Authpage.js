@@ -1,15 +1,21 @@
-export class AuthPage{
+/// <reference types="cypress" />
 
+export class AuthPage {
+    
     toggleScreen(){
-        cy.get('#registertoggle').dblclick();
+        cy.get('#registertoggle').dblclick()
     }
-    escribirUsuario(usuario){
+
+    escribirUsuario(usuario) {
         cy.get('#user').type(usuario)
     }
-    escribirContraseña(password){
+
+    escribirContraseña(password) {
         cy.get('#pass').type(password)
     }
-    clickLogin(){
+
+    submitForm() {
         cy.get("#submitForm").click()
     }
+
 }

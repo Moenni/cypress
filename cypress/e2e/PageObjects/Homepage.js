@@ -1,7 +1,8 @@
-/// <reference types ="cypress"/>
+/// <reference types="cypress" />
 
-export class Homepage{
-    clickTodoList(){
-        cy.get('#todolistlink').click();
+export class HomePage {
+
+    clickTodoList() {
+        cy.get("#todolistlink").click()
     }
 }
