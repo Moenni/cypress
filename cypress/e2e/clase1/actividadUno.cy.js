@@ -1,7 +1,7 @@
  /// <reference types="cypress" />
  describe("Actividad complementaria", () =>{
     const numero = Math.floor(Math.random() * 1000)
-    it.skip('Actividad complementeria Registro', () =>{
+    it('Actividad complementeria Registro', () =>{
         cy.visit('https://pushing-front.vercel.app/');
         cy.get('#user').type('NicolasMomo')
         cy.get('#pass').type('nicolas1@')

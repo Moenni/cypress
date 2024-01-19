@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress open --e2e -b chrome"
+    "test": "npx cypress open --e2e -b chrome",
+    "staging": "npx cypress open --e2e -b chrome --config baseUrl=https://pushing-it.vercel.app"
   },
   "keywords": [],
   "author": "",

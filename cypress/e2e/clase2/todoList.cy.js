@@ -1,13 +1,13 @@
-import { AuthPage } from "../PageObjects/AuthPage"
-import { HomePage } from "../PageObjects/HomePage"
-import { TodoListPage } from "../PageObjects/todoListPage1"
+import { AuthPage } from "../support/PageObjects/AuthPage"
+import { HomePage } from "../support/PageObjects/Homepage"
+import { TodoListPage } from "../support/PageObjects/TodoListPage"
 describe('Todo list Fixture', () => {
   const authPage = new AuthPage()
   const homePage = new HomePage()
   const todoListPage = new TodoListPage()
+
+
   
-
-
   before("Iniciar la sesion", () =>{
     Cypress.session.clearAllSavedSessions()
     cy.loginConSesion()
