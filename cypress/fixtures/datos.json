@@ -3,5 +3,15 @@
         "tarea1" : "hacer las compras",
         "tarea2" : "hacer la tarea",
         "tarea3" : "Cocinar"
+    },
+    "productos":{
+        "producto1":{
+            "precio":15
+        
+    },
+    "producto2":{
+        "precio":20
+    }
+
     }
   }

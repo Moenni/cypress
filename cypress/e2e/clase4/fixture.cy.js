@@ -1,13 +1,10 @@
 /// <reference types= "cypress"/>
 
 describe("hooks",()=>{
-    let usuario = {}
+   
     let data;
     before (()=>{
-        usuario= {
-            "user": "nicomomo1",
-            "pass": "Saibaba321@"
-        }
+      
      cy.fixture('datos').then(datosFixture =>{
       data=datosFixture
      })
@@ -19,8 +16,8 @@ describe("hooks",()=>{
         cy.log('Before each ')
         cy.visit('')
         cy.get('#registertoggle').dblclick()
-        cy.get('#user').type(usuario.user)
-        cy.get('#pass').type(usuario.pass)
+        cy.get('#user').type(Cypress.env().usuario)
+        cy.get('#pass').type(Cypress.env().password)
         cy.get('#submitForm').click()
         cy.get('#todolistlink').click()
         cy.wait(5000)
@@ -28,7 +25,9 @@ describe("hooks",()=>{
     })
 
     it.only('Primer test',()=>{
-        
+        //data.productos.precioTotal= data.productos.producto1.precio +data.productos.producto2.precio
+        //cy.log(data.productos.precioTotal)
+        data.tareas.tarea4 = 'Hacer la cama'
        cy.get('#task').wait(2000).type(data.tareas.tarea1)
         cy.get('#sendTask').click()
 
@@ -38,6 +37,10 @@ describe("hooks",()=>{
 
        cy.get('#task').clear()
         cy.get('#task').wait(2000).type(data.tareas.tarea3)
+        cy.get('#sendTask').click()
+
+        cy.get('#task').clear()
+        cy.get('#task').wait(2000).type(data.tareas.tarea4)
         cy.get('#sendTask').click()
     })
 

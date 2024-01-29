@@ -9,4 +9,8 @@ module.exports = defineConfig({
     watchForFileChanges:false,
     defaultCommandTimeout: 6000
   },
+  env:{
+    "usuario": "nicomomo1",
+    "password":"Saibaba321@"
+  }
 });
