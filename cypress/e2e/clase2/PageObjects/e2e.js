@@ -1,4 +1,4 @@
-import './commands'
+import '../../support/commands'
 
 Cypress.Commands.add("loginConSesion", () =>{
     cy.session([], () => {

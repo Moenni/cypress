@@ -1,6 +1,6 @@
-import { AuthPage } from "../support/PageObjects/AuthPage"
-import { HomePage } from "../support/PageObjects/Homepage"
-import { TodoListPage } from "../support/PageObjects/TodoListPage"
+import { AuthPage } from "../clase2/PageObjects/AuthPage"
+import { HomePage } from "../clase2/PageObjects/Homepage"
+import { TodoListPage } from "../clase2/PageObjects/TodoListPage"
 describe('Todo list Fixture', () => {
   const authPage = new AuthPage()
   const homePage = new HomePage()
