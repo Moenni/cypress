@@ -37,30 +37,32 @@ describe("hooks",()=>{
             })
     })
     it.skip('Agregar una tarea y validar el nombre y cantidad de tareas existentes',()=>{
-         cy.wait(5000)
-        cy.get('[data-cy="removeAll"]').click()
-        cy.wait(5000)
-        cy.get('li').should('not.exist') //validamos que no exista una lista 
+        cy.get('[data-cy="removeAll"]',{timeout:60000}).should('be.visible').click()
+        cy.get('li',{timeout:10000}).should('not.exist') //validamos que no exista una lista 
         cy.get('#task').wait(2000).type('Hacer la cama')
         cy.get('#sendTask').click()
-        cy.wait(5000)
-        cy.get('li').should('have.length',1).and('have.text','Hacer la cama')//validamos que exista 1 lista
+        cy.get('li').first().find('p',{timeout:15000}).should('have.length',1).and('have.text','Hacer la cama')//validamos que exista 1 lista
         cy.get('li').find('p').invoke('text').should('have.length',13)//validamos que el texto tenga 11 letras y 2 espacios
         cy.get('li').first().find('p').click() //completamos la tarea
-        cy.wait(6000)
         cy.get('li').first().find('p').should('have.attr','style','text-decoration: line-through;')//validamos que la tearea esta completada
-
         cy.get('#completed').click()
-        cy.wait(6000)
         cy.get('li').should('have.length',1)
-     
-
         cy.get('#active').click()
-        cy.wait(6000)
         cy.get('li').should('not.exist')
 
     })
-    it('Agregar una tarea y validar el nombre y cantidad de tareas existentes usando expect',()=>{
+    it('Validar timeouts con should',()=>{
+        cy.get('[data-cy="removeAll"]',{timeout:60000}).should('be.visible').click()
+        cy.get('li',{timeout:10000}).should('not.exist') //validamos que no exista una lista 
+        cy.get('#task').wait(2000).type('Hacer la cama')
+        cy.get('#sendTask').click()
+        //cy.get('li',{timeout:15000}).first().find('p',{timeout:15000}).should('have.length',1).and('have.text','Hacer las camas')//validamos que exista 1 lista
+        cy.get('li',{timeout:15000}).find('p',{timeout:15000}).invoke('text').then(text=>{
+            expect(text).to.be.equal('hacer las camas');
+        })
+      
+    })
+    it.skip('Agregar una tarea y validar el nombre y cantidad de tareas existentes usando expect',()=>{
         cy.wait(5000)
        cy.get('[data-cy="removeAll"]').click()
        cy.wait(5000)

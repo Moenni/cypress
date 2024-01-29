@@ -7,7 +7,7 @@ module.exports = defineConfig({
     },
     baseUrl: "https://pushing-it.vercel.app/",
     watchForFileChanges:false,
-    defaultCommandTimeout: 6000
+    defaultCommandTimeout: 5000
   },
   env:{
     "usuario": "nicomomo1",
