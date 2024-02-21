@@ -1,4 +1,4 @@
-const constantes = require('../constants');
+const constantes = require('../constans');
 
 export class ToDoListPage {
 

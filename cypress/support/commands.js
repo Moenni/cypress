@@ -23,3 +23,41 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+const baseUrl = 'https://pushing-it.onrender.com';
+
+Cypress.Commands.add('deleteProduct', (token, nombreProducto) => {
+    cy.request({
+        method: 'GET',
+        url: `${baseUrl}/api/products`,
+        qs: {
+            name: nombreProducto
+        },
+        headers: {
+            "authorization": `Bearer ${token}`
+        }
+    }).its('body.products.docs').each(producto => {
+        //Hacer una peticion HTTP que lo elimine // DELETE
+        cy.request({
+            method: 'DELETE',
+            url: `${baseUrl}/api/product/${producto._id}`,
+            headers: {
+                "authorization": `Bearer ${token}`
+            }
+        }).then(respuesta => {
+            expect(respuesta.status).to.be.equal(202);
+        });
+    });
+});
+
+Cypress.Commands.add('createProduct', (token, producto) => {
+    cy.request({
+        method: "POST",
+        url: `${baseUrl}/api/create-product`,
+        headers: {
+            "authorization": `Bearer ${token}`
+        },
+        body: producto
+    }).then(respuesta => {
+        expect(respuesta.status).to.be.equal(201);
+    });
+})

@@ -3,8 +3,8 @@
     const numero = Math.floor(Math.random() * 1000)
     it('Actividad complementeria Registro', () =>{
         cy.visit('https://pushing-front.vercel.app/');
-        cy.get('#user').type('NicolasMomo')
-        cy.get('#pass').type('nicolas1@')
+        cy.get('#user').type('pushingit')
+        cy.get('#pass').type('123456!')
         cy.get('[value= "Male"]').check({force:true})
         cy.get('#day').select('5')
         cy.get('#month').select('September')
@@ -16,8 +16,8 @@
     it('Actividad complementaria Login', ()=>{
         cy.visit('https://pushing-front.vercel.app/');
         cy.get('#registertoggle').dblclick();
-        cy.get('#user').type('NicolasMomo')
-        cy.get('#pass').type('nicolas1@')
+        cy.get('#user').type('pushingit')
+        cy.get('#pass').type('123456!')
         cy.get('#submitForm').click()
         cy.get('#todolistlink').click();
         

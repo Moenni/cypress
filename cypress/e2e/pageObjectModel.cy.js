@@ -1,23 +1,23 @@
-/// <reference types= "cypress" />
-
-import {LoginPage} from "../support/pages/loginPage";
+/// <reference types ="cypress"/>
+import { LoginPage } from "../support/pages/loginPage";
 import { HomePage } from "../support/pages/homePage";
-import { HeaderPage } from "../support/pages/headerPage";
-import { ToDoListPage } from "../support/pages/toDoListPage";
-import { OnlineShopFunction } from "../support/functions/onlineShopingFunction";
-describe("Page Object model", () => {
-    let data;
-    const loginPage = new LoginPage();
-    const homePage = new HomePage();
-    const headerPage = new HeaderPage();
-    const toDoListPage = new ToDoListPage();
-    const onlineShopFunction = new OnlineShopFunction();
-    before(() => {
-        cy.fixture('datos').then(datosFixture => {
-            data = datosFixture
-        });
-    });
+import {HeaderPage } from "../support/pages/headerPage";
+import {ToDoListPage} from "../support/pages/toDoListPage";
+import {OnlineShopFunction} from "../support/functions/onlineShopFunction";
 
+
+describe("Page Object model",()=>{
+    let data;
+    const loginPage= new LoginPage();
+    const homePage = new HomePage();
+    const headerPage =new HeaderPage();
+    const toDoListPage =new ToDoListPage();  
+    const onlineShopFunction = new OnlineShopFunction();
+    before(()=>{
+        cy.fixture('datos').then(datosFixture =>{
+            data= datosFixture
+        })
+    });
     beforeEach(() => {
         cy.visit('')
         cy.get('#registertoggle').dblclick();
@@ -29,7 +29,6 @@ describe("Page Object model", () => {
         toDoListPage.clickRemoveAll();
         toDoListPage.obtenerTareas().should('not.exist');
     });
-
     it.only('Agregar una tarea y validar el nombre y cantidad de tareas existentes', () => {
         toDoListPage.escribirTarea(data.tareas.tarea1);
         toDoListPage.clickSendtask();
@@ -48,4 +47,5 @@ describe("Page Object model", () => {
     it('Escribir un log con onlineShopFunction', () => {
         onlineShopFunction.shoppingCartPage.escribirUnLog('Escribiendo un log usando function')
     })
-});
+
+})

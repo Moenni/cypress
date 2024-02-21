@@ -10,8 +10,8 @@ export class LoginPage {
         cy.get(this.userInput).type(usuario);
     };
 
-    escribirContraseña(contraseña) {
-        cy.get(this.passInput).type(contraseña);
+    escribirContraseña() {
+        cy.get(this.passInput).type("saibaba321@");
     };
 
     clickLogIn() {
